@@ -16,4 +16,19 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+
+    .no-text {
+      &::before {
+        transform: scale(2.5)translateY(+30%);
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
 }
