@@ -5,10 +5,12 @@ import { RemotelyComponent } from './remotely/remotely.component';
 import { StatusTypesComponent } from './remotely/status-types/status-types.component';
 import { StatusListComponent } from './remotely/status-list/status-list.component';
 import {remoteReducer} from './remotely/store/remote.reducers';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    CoreModule,
     StoreModule.forFeature('remote', remoteReducer)
   ],
   declarations: [

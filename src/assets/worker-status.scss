@@ -1,0 +1,27 @@
+@mixin worker-status($color) {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  &::before {
+    margin-left: 20px;
+    content: "";
+    background: $color;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+.in-office {
+  @include worker-status($green);
+}
+
+.working-remotely {
+  @include worker-status($yellow);
+}
+
+.on-leave {
+  @include worker-status($red);
+}

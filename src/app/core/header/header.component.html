@@ -3,15 +3,48 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav mr-auto">
-      <a class="nav-item nav-link active" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" routerLink="/remotely">Remote List</a>
-      <a class="nav-item nav-link" routerLink="/account" *ngIf="(authState | async).isAuthenticated">Account</a>
+      <a class="nav-item nav-link active"
+         routerLink="/{{appRoutes.HOME}}">
+        Home <span class="sr-only">(current)</span>
+      </a>
+
+      <a class="nav-item nav-link"
+         routerLink="/{{appRoutes.REMOTELY}}">
+        Remote List
+      </a>
+
+      <a class="nav-item nav-link"
+         routerLink="/{{appRoutes.ACCOUNT}}"
+         *ngIf="this.isAuthenticated">
+        Account
+      </a>
     </div>
 
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/signin" *ngIf="!(authState | async).isAuthenticated">Sign In</a>
-      <a class="nav-item nav-link" routerLink="/signup" *ngIf="!(authState | async).isAuthenticated">Sign Up</a>
-      <a class="nav-item nav-link" routerLink="/home" (click)="logOut()" *ngIf="(authState | async).isAuthenticated">Log Out</a>
+      <input class="form-control"
+             placeholder="Search..."
+             (keyup)="onFilterChange()"
+             [(ngModel)]="filter"
+             *ngIf="this.router.url === '/remotely'">
+
+      <a class="nav-item nav-link"
+         routerLink="/{{appRoutes.SIGININ}}"
+         *ngIf="!this.isAuthenticated">
+        Sign In
+      </a>
+
+      <a class="nav-item nav-link"
+         routerLink="/{{appRoutes.SIGNUP}}"
+         *ngIf="!this.isAuthenticated">
+        Sign Up
+      </a>
+
+      <a class="nav-item nav-link"
+         routerLink="/{{appRoutes.HOME}}"
+         (click)="logOut()"
+         *ngIf="this.isAuthenticated">
+        Log Out
+      </a>
     </div>
   </div>
 </nav>

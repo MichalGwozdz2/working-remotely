@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as fromApp from '../../../store/app.reducers';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+
+import * as fromApp from '../../../store/app.reducers';
 
 @Component({
   selector: 'mg-status-types',
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./status-types.component.scss']
 })
 export class StatusTypesComponent implements OnInit {
-  workStatusesState: Observable<{workStatuses: string[]}>;
+  workStatusesState: Observable<{workStatuses: {code: string, name: string}[]}>;
 
   constructor(private store: Store<fromApp.AppState>) { }
 

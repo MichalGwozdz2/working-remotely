@@ -1,0 +1,10 @@
+.status-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .lead{
+    width: 100%;
+    flex: 1 0 100%;
+  }
+}

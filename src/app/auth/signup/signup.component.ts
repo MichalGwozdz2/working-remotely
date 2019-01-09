@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mg-signup',
@@ -13,7 +12,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form)
+    console.log(form);
   }
 
 }

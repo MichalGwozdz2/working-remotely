@@ -1,3 +1,4 @@
+import {WorkerStatus} from './worker-status.enum';
 
 export class Worker {
 
@@ -5,13 +6,13 @@ export class Worker {
   public username: string;
   public email: string;
   public password: string;
-  public type: string;
+  public status: WorkerStatus;
 
-  constructor(index: number, username: string, email: string, password: string, type: string) {
+  constructor(index: number, username: string, email: string, password: string, status: WorkerStatus) {
     this.index = index;
     this.username = username;
     this.email = email;
     this.password = password;
-    this.type = type;
+    this.status = status;
   }
 }

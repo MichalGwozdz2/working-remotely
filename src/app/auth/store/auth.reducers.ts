@@ -1,5 +1,8 @@
 import * as AuthActions from './auth.actions';
 
+export interface Authenticated {
+  isAuthenticated: boolean;
+}
 
 export interface State {
   isAuthenticated: boolean;

@@ -1,26 +1,42 @@
 import * as RemoteActions from './remote.actions';
 import {Worker} from './worker';
+import {WorkerStatus} from './worker-status.enum';
+
+export interface Workers {
+  workers: Worker[];
+}
+
+export interface FilterWorker {
+  filterWorker: string;
+}
 
 export interface State {
   workers: Worker[];
-  workStatuses: string[];
+  filterWorker: string;
+  workStatuses: {code: string, name: string}[];
 }
 
 const initialState: State = {
   workers: [
-    new Worker(0, 'a', 'x', 'a', 'a'),
-    new Worker(1, 'b', 'x', 'a', 'a'),
-    new Worker(2, 'c', 'x', 'a', 'a')
+    new Worker(0, 'a', 'x', 'a', WorkerStatus.IN_OFFICE),
+    new Worker(1, 'b', 'x', 'a', WorkerStatus.ON_LEAVE),
+    new Worker(2, 'c', 'x', 'a', WorkerStatus.WORKING_REMOTELY)
   ],
+  filterWorker: '',
   workStatuses: [
-    'IN_OFFICE',
-    'WORKING_REMOTELY',
-    'ON_LEAVE'
+    {code: 'in-office', name: 'in office'},
+    {code: 'working-remotely', name: 'working remotely'},
+    {code: 'on-leave', name: 'on leave'}
   ]
 };
 
 export function remoteReducer(state = initialState, action: RemoteActions.RemoteActions) {
   switch (action.type) {
+    case (RemoteActions.SET_FILTER):
+      return {
+        ...state,
+        filterWorker: action.payload
+      };
     case (RemoteActions.SET_WORKERS):
       return {
         ...state,

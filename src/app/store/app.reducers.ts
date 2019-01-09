@@ -1,4 +1,5 @@
 import {ActionReducerMap} from '@ngrx/store';
+
 import * as fromAuth from '../auth/store/auth.reducers';
 import * as fromRemote from '../remotely/remotely/store/remote.reducers';
 

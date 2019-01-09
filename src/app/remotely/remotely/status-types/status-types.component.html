@@ -1,5 +1,9 @@
-<ul class="list-group">
-  <li *ngFor="let status of (workStatusesState | async).workStatuses">
-    {{status}}
-  </li>
-</ul>
+<div class="jumbotron status-types">
+  <p class="lead">
+    Below you can find every type of work status
+  </p>
+
+  <div *ngFor="let status of (workStatusesState | async).workStatuses">
+    <div [ngClass]="status.code">{{status.name | uppercase}}</div>
+  </div>
+</div>

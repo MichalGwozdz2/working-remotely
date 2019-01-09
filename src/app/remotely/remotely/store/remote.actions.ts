@@ -1,11 +1,18 @@
 import { Action } from '@ngrx/store';
+
 import { Worker } from './worker';
 
+export const SET_FILTER = 'SET_FILTER';
 export const SET_WORKERS = 'SET_WORKERS';
 export const ADD_WORKER = 'ADD_WORKER';
 export const UPDATE_WORKER = 'UPDATE_WORKER';
 export const DELETE_WORKER = 'DELETE_WORKER';
-export const FETCH_WORKERS = 'FETCH_WORKERS';
+
+export class SetFilter implements Action {
+  readonly type = SET_FILTER;
+
+  constructor(public payload: string) {}
+}
 
 export class SetWorkers implements Action {
   readonly type = SET_WORKERS;
@@ -32,6 +39,7 @@ export class DeleteWorker implements Action {
 }
 
 export type RemoteActions =
+  SetFilter |
   SetWorkers |
   AddWorker |
   UpdateWorker |

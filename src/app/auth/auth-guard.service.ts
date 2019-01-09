@@ -1,9 +1,10 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import * as fromApp from '../store/app.reducers';
-import * as fromAuth from '../auth/store/auth.reducers';
-import {Store} from '@ngrx/store';
 import { take, map } from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+
+import * as fromAuth from '../auth/store/auth.reducers';
+import * as fromApp from '../store/app.reducers';
 
 @Injectable({
   providedIn: 'root'
