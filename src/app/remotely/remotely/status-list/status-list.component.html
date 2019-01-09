@@ -1,8 +1,12 @@
 <ul class="list-group">
   <li class="list-group-item status-list-element"
-      *ngFor="let worker of workers | search:filter">
+      *ngFor="let worker of workers
+       | filterWorkerByUsername:filterUsername
+       | filterWorkerByStatus:filterStatus"
+      (click)="openWorker(worker)">
+
     <div>{{worker.username}}</div>
 
-    <div [ngClass]="worker.status">{{worker.status}}</div>
+    <div [ngClass]="worker.status.code">{{worker.status.name | uppercase}}</div>
   </li>
 </ul>

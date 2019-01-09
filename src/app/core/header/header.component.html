@@ -25,10 +25,10 @@
              placeholder="Search..."
              (keyup)="onFilterChange()"
              [(ngModel)]="filter"
-             *ngIf="this.router.url === '/remotely'">
+             *ngIf="isRouterSetOnRemotely()">
 
       <a class="nav-item nav-link"
-         routerLink="/{{appRoutes.SIGININ}}"
+         routerLink="/{{appRoutes.SIGNIN}}"
          *ngIf="!this.isAuthenticated">
         Sign In
       </a>

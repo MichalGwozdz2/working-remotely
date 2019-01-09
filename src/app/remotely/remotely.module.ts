@@ -6,11 +6,13 @@ import { StatusTypesComponent } from './remotely/status-types/status-types.compo
 import { StatusListComponent } from './remotely/status-list/status-list.component';
 import {remoteReducer} from './remotely/store/remote.reducers';
 import {CoreModule} from '../core/core.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
+    SharedModule,
     StoreModule.forFeature('remote', remoteReducer)
   ],
   declarations: [

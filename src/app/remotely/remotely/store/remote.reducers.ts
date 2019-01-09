@@ -1,41 +1,56 @@
 import * as RemoteActions from './remote.actions';
 import {Worker} from './worker';
-import {WorkerStatus} from './worker-status.enum';
+import {WorkerStatus} from './worker-status';
+
+export interface WorkerStatuses {
+  workStatuses: WorkerStatus[];
+}
 
 export interface Workers {
   workers: Worker[];
 }
 
-export interface FilterWorker {
-  filterWorker: string;
+export interface FilterWorkerUsername {
+  filterWorkerUsername: string;
+}
+
+export interface FilterWorkerStatus {
+  filterWorkerStatus: WorkerStatus;
 }
 
 export interface State {
   workers: Worker[];
-  filterWorker: string;
-  workStatuses: {code: string, name: string}[];
+  filterWorkerUsername: string;
+  filterWorkerStatus: WorkerStatus;
+  workStatuses: WorkerStatus[];
 }
 
 const initialState: State = {
   workers: [
-    new Worker(0, 'a', 'x', 'a', WorkerStatus.IN_OFFICE),
-    new Worker(1, 'b', 'x', 'a', WorkerStatus.ON_LEAVE),
-    new Worker(2, 'c', 'x', 'a', WorkerStatus.WORKING_REMOTELY)
+    new Worker(0, 'a', 'x', 'a', {index: 0, code: 'in-office', name: 'in office'}),
+    new Worker(1, 'b', 'x', 'a', {index: 1, code: 'working-remotely', name: 'working remotely'}),
+    new Worker(2, 'c', 'x', 'a', {index: 2, code: 'on-leave', name: 'on leave'})
   ],
-  filterWorker: '',
+  filterWorkerUsername: '',
+  filterWorkerStatus: null,
   workStatuses: [
-    {code: 'in-office', name: 'in office'},
-    {code: 'working-remotely', name: 'working remotely'},
-    {code: 'on-leave', name: 'on leave'}
+    {index: 0, code: 'in-office', name: 'in office'},
+    {index: 1, code: 'working-remotely', name: 'working remotely'},
+    {index: 2, code: 'on-leave', name: 'on leave'}
   ]
 };
 
 export function remoteReducer(state = initialState, action: RemoteActions.RemoteActions) {
   switch (action.type) {
-    case (RemoteActions.SET_FILTER):
+    case (RemoteActions.SET_FILTER_USERNAME):
       return {
         ...state,
-        filterWorker: action.payload
+        filterWorkerUsername: action.payload
+      };
+    case (RemoteActions.SET_FILTER_STATUS):
+      return {
+        ...state,
+        filterWorkerStatus: action.payload
       };
     case (RemoteActions.SET_WORKERS):
       return {

@@ -1,17 +1,25 @@
 import { Action } from '@ngrx/store';
 
 import { Worker } from './worker';
+import {WorkerStatus} from './worker-status';
 
-export const SET_FILTER = 'SET_FILTER';
+export const SET_FILTER_USERNAME = 'SET_FILTER_USERNAME';
+export const SET_FILTER_STATUS = 'SET_FILTER_STATUS';
 export const SET_WORKERS = 'SET_WORKERS';
 export const ADD_WORKER = 'ADD_WORKER';
 export const UPDATE_WORKER = 'UPDATE_WORKER';
 export const DELETE_WORKER = 'DELETE_WORKER';
 
-export class SetFilter implements Action {
-  readonly type = SET_FILTER;
+export class SetFilterUsername implements Action {
+  readonly type = SET_FILTER_USERNAME;
 
   constructor(public payload: string) {}
+}
+
+export class SetFilterStatus implements Action {
+  readonly type = SET_FILTER_STATUS;
+
+  constructor(public payload: WorkerStatus) { }
 }
 
 export class SetWorkers implements Action {
@@ -39,7 +47,8 @@ export class DeleteWorker implements Action {
 }
 
 export type RemoteActions =
-  SetFilter |
+  SetFilterUsername |
+  SetFilterStatus |
   SetWorkers |
   AddWorker |
   UpdateWorker |

@@ -1,4 +1,4 @@
-import {WorkerStatus} from './worker-status.enum';
+import {WorkerStatus} from './worker-status';
 
 export class Worker {
 

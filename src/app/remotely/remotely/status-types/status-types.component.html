@@ -1,9 +1,17 @@
 <div class="jumbotron status-types">
+  <h1 class="display-4">
+    Status Types.
+  </h1>
+
   <p class="lead">
-    Below you can find every type of work status
+    Click one of them to filter out rest of the types.
   </p>
 
-  <div *ngFor="let status of (workStatusesState | async).workStatuses">
-    <div [ngClass]="status.code">{{status.name | uppercase}}</div>
+  <div *ngFor="let status of statuses">
+    <div [ngClass]="{'selected': status?.code === filterStatus?.code}"
+         class="status-type {{status.code}}"
+         (click)="onFilterChanges(status)">
+      {{status.name | uppercase}}
+    </div>
   </div>
 </div>
