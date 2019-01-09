@@ -1,0 +1,13 @@
+.form-control {
+  width: 400px !important;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-right: 5px solid $green;
+  box-sizing: border-box !important;
+}
+
+.ng-invalid:not(form):not(.ng-pristine) {
+  border-right: 5px solid $red;
+  box-sizing: border-box !important;;
+}
