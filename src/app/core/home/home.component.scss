@@ -1,8 +1,9 @@
 .bg {
   .bg-video {
+    background-image: url('../../../assets/Road-candies.jpg');
     object-fit: cover;
     position: fixed;
-    top: 0;
+    top: 7vh;
     left: 0;
     z-index: -1;
     opacity: .4;

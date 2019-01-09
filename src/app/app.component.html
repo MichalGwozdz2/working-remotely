@@ -3,8 +3,8 @@
 
   <div class="container app-container">
     <div class="row">
-      <div class="col-md-12">
-        <router-outlet></router-outlet>
+      <div class="col-md-12" [@leaveAnimation]="o.isActivated ? o.activatedRoute : ''">
+        <router-outlet #o="outlet"></router-outlet>
       </div>
     </div>
   </div>

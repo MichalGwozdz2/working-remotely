@@ -10,6 +10,7 @@ import {AccountModule} from './account/account.module';
 import {RemotelyModule} from './remotely/remotely.module';
 import {reducers} from './store/app.reducers';
 import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AccountModule,
     RemotelyModule,
     StoreModule.forRoot(reducers),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
