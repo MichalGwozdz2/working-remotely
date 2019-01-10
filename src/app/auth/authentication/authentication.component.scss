@@ -1,7 +1,18 @@
+@import "../../../styles";
+
 .signup {
+  width: 100%;
   height: 80vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  .authentication-error {
+    @include input-right-side-color($red);
+  }
+
+  .authentication-error-message {
+    word-wrap: break-word;
+  }
 }

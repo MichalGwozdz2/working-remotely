@@ -1,13 +1,17 @@
+@mixin input-right-side-color($color) {
+  border-right: 5px solid $color;
+  box-sizing: border-box !important;
+}
+
 .form-control {
   width: 400px !important;
 }
 
 .ng-valid[required], .ng-valid.required  {
-  border-right: 5px solid $green;
-  box-sizing: border-box !important;
+  @include input-right-side-color($green)
 }
 
 .ng-invalid:not(form):not(.ng-pristine) {
-  border-right: 5px solid $red;
-  box-sizing: border-box !important;;
+  @include input-right-side-color($red)
+;
 }

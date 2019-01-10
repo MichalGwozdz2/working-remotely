@@ -9,7 +9,14 @@
         <div class="input-group-prepend">
           <span class="input-group-text">u</span>
         </div>
-        <input type="text" class="form-control" id="name" name="name" ngModel required/>
+        <input type="text"
+               class="form-control"
+               id="name"
+               name="name"
+               (ngModelChange)="onInputChanged()"
+               [ngClass]="{'authentication-error': haveAuthenticationErrorInUser()}"
+               ngModel
+               required/>
       </div>
     </div>
 
@@ -22,7 +29,14 @@
         <div class="input-group-prepend">
           <span class="input-group-text">#</span>
         </div>
-        <input type="password" class="form-control" id="password" name="password" ngModel required/>
+        <input type="password"
+               class="form-control"
+               id="password"
+               name="password"
+               (ngModelChange)="onInputChanged()"
+               [ngClass]="{'authentication-error': haveAuthenticationErrorInPassword()}"
+               ngModel
+               required/>
       </div>
     </div>
 
@@ -30,4 +44,8 @@
       {{isSignup() ? 'Submit' : 'Log in'}}
     </button>
   </form>
+
+  <div class="alert alert-danger mt-4 authentication-error-message" role="alert" *ngIf="authenticationError">
+    {{authenticationError.message}}
+  </div>
 </div>

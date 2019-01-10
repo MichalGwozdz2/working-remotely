@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
     this.authSubscription = this.store.select('auth')
-      .pipe(map((authState: fromAuth.Authenticated) => authState.isAuthenticated))
+      .pipe(map((authState: fromAuth.State) => authState.isAuthenticated))
       .subscribe((isAuthenticated: boolean) => {
         this.isAuthenticated = isAuthenticated;
       });
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logOut() {
-    this.store.dispatch(new AuthActions.TryLogout());
+    this.store.dispatch(new AuthActions.TryLogoutAction());
   }
 
   onFilterChange() {

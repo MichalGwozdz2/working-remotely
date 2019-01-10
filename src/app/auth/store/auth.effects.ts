@@ -19,7 +19,7 @@ export class AuthEffects {
   authSignin = this.actions$
     .pipe(
       ofType(AuthActions.TRY_SIGNIN),
-      map((action: AuthActions.TrySignup) => action.payload),
+      map((action: AuthActions.TrySignupAction) => action.payload),
       exhaustMap((authData: {username: string, password: string}) => {
         return from(firebase.auth().signInWithEmailAndPassword(authData.username, authData.password)).pipe(
           map(() => firebase.auth().currentUser.getIdToken()),
@@ -30,8 +30,11 @@ export class AuthEffects {
               payload: token
             }];
           }),
-          catchError(() => {
-            return of({type: AuthActions.LOGOUT});
+          catchError((error) => {
+            return of({
+              type: AuthActions.AUTHENTICATION_ERROR,
+              payload: error
+            });
           })
         );
       }),
@@ -41,7 +44,7 @@ export class AuthEffects {
   authSignup = this.actions$
     .pipe(
       ofType(AuthActions.TRY_SIGNUP),
-      map((action: AuthActions.TrySignup) => action.payload),
+      map((action: AuthActions.TrySignupAction) => action.payload),
       exhaustMap((authData: {username: string, password: string}) => {
         return from(firebase.auth().createUserWithEmailAndPassword(authData.username, authData.password)).pipe(
           map(() => firebase.auth().currentUser.getIdToken()),
@@ -52,8 +55,11 @@ export class AuthEffects {
               payload: token
             }];
           }),
-          catchError(() => {
-            return of({type: AuthActions.LOGOUT});
+          catchError((error) => {
+            return of({
+              type: AuthActions.AUTHENTICATION_ERROR,
+              payload: error
+            });
           })
         );
       })
