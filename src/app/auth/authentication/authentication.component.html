@@ -1,7 +1,9 @@
 <div class="signup">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="form-group">
-      <label for="name">Username</label>
+      <label for="name">
+        {{isSignup() ? 'Set username' : 'Type your username'}}
+      </label>
 
       <div class="input-group flex-nowrap">
         <div class="input-group-prepend">
@@ -12,18 +14,9 @@
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
-
-      <div class="input-group flex-nowrap">
-        <div class="input-group-prepend">
-          <span class="input-group-text">e</span>
-        </div>
-        <input type="email" class="form-control" id="email" name="email" ngModel required/>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">
+        {{isSignup() ? 'Set password' : 'Type your password'}}
+      </label>
 
       <div class="input-group flex-nowrap">
         <div class="input-group-prepend">
@@ -33,6 +26,8 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">
+      {{isSignup() ? 'Submit' : 'Log in'}}
+    </button>
   </form>
 </div>

@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logOut() {
-    this.store.dispatch(new AuthActions.Logout());
+    this.store.dispatch(new AuthActions.TryLogout());
   }
 
   onFilterChange() {

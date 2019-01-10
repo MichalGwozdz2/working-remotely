@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {Routes} from '@angular/router';
 
-import {SignupComponent} from './signup/signup.component';
-import {SigninComponent} from './signin/signin.component';
+import {AuthenticationComponent} from './authentication/authentication.component';
 import {AppRoutes} from '../routing/app-routes.enum';
 
 const authRoutes: Routes = [
-  {path: AppRoutes.SIGNUP, component: SignupComponent},
-  {path: AppRoutes.SIGNIN, component: SigninComponent}
+  {path: AppRoutes.SIGNUP, component: AuthenticationComponent},
+  {path: AppRoutes.SIGNIN, component: AuthenticationComponent}
 ];
 
 @NgModule({

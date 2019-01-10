@@ -1,3 +1,5 @@
+@import "../../../styles";
+
 .bg {
   .bg-video {
     background-image: url('../../../assets/Road-candies.jpg');
@@ -9,6 +11,11 @@
     opacity: .4;
     width: 100vw;
     height: 100vh;
+
+    video {
+      object-fit: cover;
+      background-color: $white;
+    }
   }
 
   .title {

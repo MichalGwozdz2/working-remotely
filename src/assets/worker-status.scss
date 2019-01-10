@@ -6,6 +6,7 @@
   align-items: center;
 
   &::before {
+    border: 1px solid $black;
     margin-left: 10px;
     content: "";
     background: $color;

@@ -12,9 +12,15 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [
+      "core-js"
+    ],
     "lib": [
-      "es2017",
+      "es6",
       "dom"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -6,36 +6,29 @@ export interface Authenticated {
 
 export interface State {
   isAuthenticated: boolean;
-  loggedWorkerId: number;
+  token: string;
 }
 
 const initialState: State = {
   isAuthenticated: false,
-  loggedWorkerId: -1
+  token: null
 };
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
-
   switch (action.type) {
-    case(AuthActions.SIGNIN):
-      return {
-        ...state,
-        loggedWorkerId: action.payload,
-        isAuthenticated: true
-      };
-    case(AuthActions.SIGNUP):
-      return {
-        ...state,
-        loggedWorkerId: action.payload,
-        isAuthenticated: true
-      };
     case(AuthActions.LOGOUT):
       return {
         ...state,
-        loggedWorkerId: -1,
+        token: null,
         isAuthenticated: false
       };
+    case (AuthActions.SET_TOKEN):
+      return {
+        ...state,
+        token: action.payload,
+        isAuthenticated: true
+      };
     default:
-      return state;
+      return {...state};
   }
 }

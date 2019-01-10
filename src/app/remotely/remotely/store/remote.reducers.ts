@@ -27,9 +27,9 @@ export interface State {
 
 const initialState: State = {
   workers: [
-    new Worker(0, 'a', 'x', 'a', {index: 0, code: 'in-office', name: 'in office'}),
-    new Worker(1, 'b', 'x', 'a', {index: 1, code: 'working-remotely', name: 'working remotely'}),
-    new Worker(2, 'c', 'x', 'a', {index: 2, code: 'on-leave', name: 'on leave'})
+    new Worker(0, 'User 1', 'x', 'a', {index: 0, code: 'in-office', name: 'in office'}),
+    new Worker(1, 'User 2', 'x', 'a', {index: 1, code: 'working-remotely', name: 'working remotely'}),
+    new Worker(2, 'User 3', 'x', 'a', {index: 2, code: 'on-leave', name: 'on leave'})
   ],
   filterWorkerUsername: '',
   filterWorkerStatus: null,
