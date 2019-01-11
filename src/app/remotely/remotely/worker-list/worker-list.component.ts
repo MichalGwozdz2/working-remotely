@@ -12,17 +12,17 @@ import {WorkerStatus} from '../store/worker-status';
 
 @Component({
   selector: 'mg-status-list',
-  templateUrl: './status-list.component.html',
-  styleUrls: ['./status-list.component.scss']
+  templateUrl: './worker-list.component.html',
+  styleUrls: ['./worker-list.component.scss']
 })
-export class StatusListComponent implements OnInit, OnDestroy {
+export class WorkerListComponent implements OnInit, OnDestroy {
   workerState: Subscription;
   filterUsernameState: Subscription;
   filterStatusState: Subscription;
 
   filterUsername: string;
   filterStatus: WorkerStatus = null;
-  workers: Worker[] = [];
+  workerList: Array<Worker> = [];
 
   constructor(private store: Store<fromApp.AppState>,
               private router: Router) { }
@@ -32,7 +32,7 @@ export class StatusListComponent implements OnInit, OnDestroy {
     this.workerState = workerObservable
       .pipe(map((state: fromRemote.State) => state.workers))
       .subscribe((workers: Worker[]) => {
-        this.workers = workers;
+        this.workerList = workers;
       });
 
     this.filterUsernameState = workerObservable

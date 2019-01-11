@@ -1,5 +1,7 @@
 <div class="signup">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <h1 class="text-uppercase font-weight-bold">{{isSignup() ? 'Sign Up' : 'Sign In'}}</h1>
+
     <div class="form-group">
       <label for="name">
         {{isSignup() ? 'Set username' : 'Type your username'}}

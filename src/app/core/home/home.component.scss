@@ -2,7 +2,7 @@
 
 .bg {
   .bg-video {
-    background-image: url('../../../assets/Road-candies.jpg');
+    background: url('../../../assets/Road-candies.jpg') no-repeat center center fixed;
     object-fit: cover;
     position: fixed;
     top: 7vh;
@@ -13,8 +13,8 @@
     height: 100vh;
 
     video {
+      width: 100vw;
       object-fit: cover;
-      background-color: $white;
     }
   }
 

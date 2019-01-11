@@ -6,12 +6,13 @@ import {AccountComponent} from '../account/account/account.component';
 import {RemotelyComponent} from '../remotely/remotely/remotely.component';
 import {AuthGuard} from '../auth/auth-guard.service';
 import {AppRoutes} from './app-routes.enum';
+import {WorkerListResolver} from '../remotely/remotely/worker-list/worker-list-resolver.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: AppRoutes.HOME, pathMatch: 'full'},
   {path: AppRoutes.HOME, component: HomeComponent},
-  {path: AppRoutes.REMOTELY, component: RemotelyComponent},
-  {path: AppRoutes.ACCOUNT, component: HomeComponent,
+  {path: AppRoutes.REMOTELY, component: RemotelyComponent, resolve: {workerList: WorkerListResolver}},
+  {path: AppRoutes.ACCOUNT, component: AccountComponent,
     canActivate: [AuthGuard], canActivateChild: [AuthGuard],
     children: [
       {

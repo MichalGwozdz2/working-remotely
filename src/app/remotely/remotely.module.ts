@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { RemotelyComponent } from './remotely/remotely.component';
 import { StatusTypesComponent } from './remotely/status-types/status-types.component';
-import { StatusListComponent } from './remotely/status-list/status-list.component';
+import { WorkerListComponent } from './remotely/worker-list/worker-list.component';
 import {remoteReducer} from './remotely/store/remote.reducers';
 import {CoreModule} from '../core/core.module';
 import {SharedModule} from '../shared/shared.module';
@@ -18,7 +18,7 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     RemotelyComponent,
     StatusTypesComponent,
-    StatusListComponent
+    WorkerListComponent
   ]
 })
 export class RemotelyModule { }

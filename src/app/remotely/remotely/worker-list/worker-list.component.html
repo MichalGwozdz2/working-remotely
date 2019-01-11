@@ -1,0 +1,23 @@
+<div>
+  <ul class="list-group" *ngIf="workerList.length !== 0; else loading">
+    <li class="list-group-item status-list-element"
+        *ngFor="let worker of workerList
+       | filterWorkerByUsername:filterUsername
+       | filterWorkerByStatus:filterStatus"
+        (click)="openWorker(worker)">
+
+      <div>{{worker.username}}</div>
+
+      <div [ngClass]="worker.status.code">{{worker.status.name | uppercase}}</div>
+    </li>
+  </ul>
+
+  <ng-template #loading>
+    <div class="d-flex justify-content-center worker-spinner">
+      <div class="spinner-border" style="width: 6rem; height: 6rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+</div>
+

@@ -6,10 +6,6 @@ export interface WorkerStatuses {
   workStatuses: WorkerStatus[];
 }
 
-export interface Workers {
-  workers: Worker[];
-}
-
 export interface FilterWorkerUsername {
   filterWorkerUsername: string;
 }
@@ -26,11 +22,7 @@ export interface State {
 }
 
 const initialState: State = {
-  workers: [
-    new Worker(0, 'User 1', 'x', 'a', {index: 0, code: 'in-office', name: 'in office'}),
-    new Worker(1, 'User 2', 'x', 'a', {index: 1, code: 'working-remotely', name: 'working remotely'}),
-    new Worker(2, 'User 3', 'x', 'a', {index: 2, code: 'on-leave', name: 'on leave'})
-  ],
+  workers: [],
   filterWorkerUsername: '',
   filterWorkerStatus: null,
   workStatuses: [
@@ -69,14 +61,14 @@ export function remoteReducer(state = initialState, action: RemoteActions.Remote
       workers[workerId] = updatedWorker;
       return {
         ...state,
-        workers: workers
+        workers: [...workers]
       };
     case (RemoteActions.DELETE_WORKER):
       const oldWorkers = [...state.workers];
       oldWorkers.splice(action.payload, 1);
       return {
         ...state,
-        workers: oldWorkers
+        workers: [...oldWorkers]
       };
     default:
       return {

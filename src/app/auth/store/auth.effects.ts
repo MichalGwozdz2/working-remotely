@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, switchMap, concatMap, catchError, exhaustMap, mergeMap } from 'rxjs/operators';
-import { from, Observable, of, throwError } from 'rxjs';
+import { from, of } from 'rxjs';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
 
@@ -22,8 +22,8 @@ export class AuthEffects {
       map((action: AuthActions.TrySignupAction) => action.payload),
       exhaustMap((authData: {username: string, password: string}) => {
         return from(firebase.auth().signInWithEmailAndPassword(authData.username, authData.password)).pipe(
-          map(() => firebase.auth().currentUser.getIdToken()),
-          mergeMap((token) => {
+          switchMap(() => from(firebase.auth().currentUser.getIdToken())),
+          mergeMap((token: string) => {
             this.router.navigate([AppRoutes.HOME]);
             return [{
               type: AuthActions.SET_TOKEN,

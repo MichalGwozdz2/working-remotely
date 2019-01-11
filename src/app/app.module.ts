@@ -6,6 +6,8 @@ import {EffectsModule} from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './routing/app-routing.module';
@@ -15,6 +17,7 @@ import {AccountModule} from './account/account.module';
 import {RemotelyModule} from './remotely/remotely.module';
 import {reducers} from './store/app.reducers';
 import {AuthEffects} from './auth/store/auth.effects';
+import {AuthInterceptor} from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,17 @@ import {AuthEffects} from './auth/store/auth.effects';
     RemotelyModule,
     StoreModule.forRoot(reducers),
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     EffectsModule.forRoot([AuthEffects]),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

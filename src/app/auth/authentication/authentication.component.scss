@@ -8,6 +8,10 @@
   flex-direction: column;
   justify-content: center;
 
+  h1 {
+    font-size: 3rem;
+  }
+
   .authentication-error {
     @include input-right-side-color($red);
   }

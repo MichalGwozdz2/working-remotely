@@ -27,6 +27,7 @@ export class AuthenticationComponent implements OnInit, OnDestroy {
       .subscribe((authenticationError: AuthenticationError) => {
         this.authenticationError = authenticationError;
       });
+    this.authenticationError = null;
   }
 
   onInputChanged() {
